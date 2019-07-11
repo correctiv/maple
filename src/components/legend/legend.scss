@@ -1,0 +1,121 @@
+@import '../../scss/vars.scss';
+@import '../../scss/mixins.scss';
+
+.mapple-legend {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  @include bp-sm {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    width: 140px;
+  }
+
+  &__square {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin: 10px 0 20px 20px;
+    position: relative;
+  }
+
+  &__label {
+    font-size: 12px;
+    line-height: 12px;
+    position: absolute;
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+
+    // value extent
+    em {
+      position: absolute;
+      font-size: 10px;
+      font-weight: bold;
+      font-style: normal;
+
+      &:first-child {
+        left: 0;
+      }
+      &:last-child {
+        right: 0;
+      }
+    }
+
+
+    // label 1
+    &--x {
+      bottom: 5px;
+      left: 20px;
+    }
+
+    // label 2
+    &--y {
+      transform: rotate(-90deg);
+      bottom: 60px;
+      left: -35px;
+    }
+  }
+
+  &__item {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+
+    &--X1Y1 {
+      bottom: 0;
+      left: 0;
+    }
+
+    &--X2Y1 {
+      bottom: 0;
+      left: 30px;
+    }
+
+    &--X3Y1 {
+      bottom: 0;
+      left: 60px;
+    }
+
+    &--X1Y2 {
+      bottom: 30px;
+      left: 0;
+    }
+
+    &--X2Y2 {
+      bottom: 30px;
+      left: 30px;
+    }
+
+    &--X3Y2 {
+      bottom: 30px;
+      left: 60px;
+    }
+
+    &--X1Y3 {
+      bottom: 60px;
+      left: 0;
+    }
+
+    &--X2Y3 {
+      bottom: 60px;
+      left: 30px;
+    }
+
+    &--X3Y3 {
+      bottom: 60px;
+      left: 60px;
+    }
+  }
+
+  &__annotation {
+    // text-align: center;
+    font-weight: bold;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid $gray;
+  }
+}

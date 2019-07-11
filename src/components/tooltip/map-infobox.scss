@@ -1,0 +1,160 @@
+@import './history-chart/history-chart.scss';
+
+@include cssPrefix('infobox') {
+
+  // FIXME
+  // @include visible(&);
+  display: none;
+  // width: 0;
+  // display: block;
+  // height: 0;
+  // overflow: hidden;
+  // opacity: 0;
+  // @include transition(opacity, $transition-duration);
+
+  &.-visible {
+    display: block;
+    // min-height: 400px;
+    // opacity: 1;
+    // @include transition(opacity, $transition-duration);
+  }
+
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: $white-transp;
+  z-index: 1111;
+  box-shadow: $box-shadow;
+
+  @media (max-width: $screen-sm - 1) {
+    left: 10px;
+  }
+
+  @include bp-sm {
+    width: 300px;
+  }
+
+  .-clear- {
+    display: block;
+    clear: both;
+  }
+
+  &__header, &__section {
+    padding: 15px;
+  }
+
+  &__header {
+    background-color: $gray-lighter;
+
+    &__section {
+      @include bp-xs {
+        width: 50%;
+        float: left;
+      }
+
+      @include bp-sm {
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-family: $font-neuzeit;
+  }
+
+  &__state {
+    color: $gray-dark;
+    font-size: 14px;
+    font-family: $font-neuzeit-cond;
+    text-transform: uppercase;
+  }
+
+  &__population, &__f-ratio {
+    font-size: 14px;
+    display: block;
+  }
+
+  &__section {
+    display: block;
+    width: 100%;
+    border-top: dashed 1px $gray-light;
+
+    @include bp-xs {
+      float: left;
+      width: 50%;
+      padding-right: 0px;
+    }
+
+    @include bp-sm {
+      float: none;
+      width: 100%;
+      padding-right: 15px;
+    }
+
+    &--last {
+      @include bp-xs {
+        padding-right: 15px;
+      }
+    }
+
+    &__title {
+      margin: 0;
+      font-family: $font-neuzeit-cond;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    dl {
+      display: block;
+      padding-right: 10px;
+      margin-bottom: 0;
+      float: left;
+
+      @include bp-sm {
+        padding-right: 20px;
+      }
+    }
+
+    dt {
+      padding-top: .7em;
+      font-size: 20px;
+      line-height: 1em;
+      font-family: $font-neuzeit;
+      font-weight: bold;
+
+      &.-small {
+        font-size: 12px;
+        padding-top: 0px;
+        color: $gray-dark;
+      }
+    }
+
+    dd {
+      font-weight: normal;
+      line-height: 1.2em;
+
+      &.badge {
+        padding: 3px 5px 3px 5px;
+        border-radius: 3px;
+      }
+
+      &.badge--t {
+        background-color: $total-color;
+      }
+
+      &.badge--e {
+        background-color: $exclusive-color;
+      }
+
+      &.badge--i {
+        background-color: $inclusive-color;
+      }
+    }
+  }
+
+  &__close-btn { @include close-btn; }
+}

@@ -1,0 +1,40 @@
+<mapple-legend class="mapple-legend">
+
+  <span class="mapple-legend__annotation">{ state.legend_text }</span>
+  <span class="mapple-legend__label mapple-legend__label--x">
+    <em>{ state.extentX[0] }</em>
+    { state.value1_label }
+    <em>{ state.extentX[1] }</em>
+  </span>
+  <span class="mapple-legend__label mapple-legend__label--y">
+    <em>{ state.extentY[0] }</em>
+    { state.value2_label }
+    <em>{ state.extentY[1] }</em>
+  </span>
+  <span class="mapple-legend__square">
+    <span each={ tick in state.ticks }
+      class="mapple-legend__item mapple-legend__item--{ tick.id }"
+      style="background-color:{ tick.color };"></span>
+  </span>
+
+  <script>
+    import { STORE } from '~/events.js'
+
+    export default {
+      state: {
+        extentX: [],
+        extentY: []
+      },
+      onMounted() {
+        const ticks = Object.keys(STORE.config.colors).map(k => {
+          return {
+            id: k,
+            color: STORE.config.colors[k]
+          }
+        })
+        this.update({ ...STORE.config, ticks })
+      }
+    }
+  </script>
+
+</mapple-legend>

@@ -1,0 +1,36 @@
+<mapple>
+  <mapple-header class="mapple-header" />
+  <section class="mapple__map-header">
+    <h2 class="mapple__map-title">{ state.title }</h2>
+    <p class="mapple__map-intro">{ state.intro }</p>
+  </section>
+  <bivariate-map class="mapple-bivariate-map"
+    style="max-width:{ state.app_maxwidth };" />
+  <mapple-infobox class="mapple-infobox" />
+  <mapple-searchbox class="mapple-searchbox" />
+  <mapple-legend class="mapple-legend "/>
+
+  <script>
+    import BivariateMap from '~/components/bivariate-map/bivariate-map.riot'
+    import MappleInfobox from '~/components/infobox/infobox.riot'
+    import MappleSearchbox from '~/components/searchbox/searchbox.riot'
+    import MappleLegend from '~/components/legend/legend.riot'
+    import MappleHeader from '~/components/header/header.riot'
+    import { STORE } from '~/events.js'
+
+    export default {
+      state: {},
+      components: {
+        BivariateMap,
+        MappleInfobox,
+        MappleSearchbox,
+        MappleLegend,
+        MappleHeader
+      },
+      onMounted() {
+        this.update(STORE.config)
+      }
+    }
+
+  </script>
+</mapple>

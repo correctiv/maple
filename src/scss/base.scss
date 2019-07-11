@@ -1,3 +1,41 @@
+@import './vars.scss';
+@import './mixins.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
+
 body {
-  color: blue;
+  margin: 0;
+  padding: 60px 0 0 0 !important;
+}
+
+#mapple {
+  font-family: $font-sans;
+  display: block;
+  position: relative;
+  background-color: $gray-lighter;
+  margin: 0;
+  padding: 0;
+}
+
+.mapple__map {
+  &-title {
+    margin: 0;
+  }
+
+  &-intro {
+    margin-bottom: 0;
+  }
+
+  &-header {
+    @include bp-sm {
+      width: 50%;
+      position: fixed;
+      top: 90px;
+      left: 10px;
+      background-color: $white-transp;
+      z-index: 1111;
+      box-shadow: $box-shadow;
+      padding: 10px;
+    }
+  }
 }

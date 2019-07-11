@@ -1,0 +1,61 @@
+<mapple-infobox class="mapple-infobox { state.visible ? 'mapple-infobox--visible' : null }">
+
+  <button class="mapple-infobox__close-btn" aria-label='Close' onclick={ handleClose }></button>
+
+  <header class="mapple-infobox__section mapple-infobox__section--head">
+    <span class="mapple-infobox__section-subtitle">{ state.data.country }</span>
+    <h3 class="mapple-infobox__section-title">{ state.data.name }</h3>
+  </header>
+
+  <section class="mapple-infobox__section">
+    <h3 class="mapple-infobox__section-title">{ state.labels.title }</h3>
+    <p class="mapple-infobox__description">{ state.labels.description }</h3>
+    <dl>
+      <dt>{ f(state.data.x) } { state.labels.unit }</dt>
+      <dd>{ state.labels.x }</dd>
+    </dl>
+    <dl>
+      <dt>{ f(state.data.y) } { state.labels.unit }</dt>
+      <dd>{ state.labels.y }</dd>
+    </dl>
+  </section>
+
+  <script>
+    import { CONTROL, EVENTS, STORE } from '~/events.js'
+    import { formatNumber } from './utils.js'
+
+    const getLabels = () => {
+      const { config } = STORE
+      return {
+        x: config.value1_label,
+        y: config.value2_label,
+        title: config.tooltip_title,
+        description: config.tooltip_description,
+        unit: config.unit
+      }
+    }
+
+    export default {
+      state: {
+        visible: false,
+        data: {},
+        labels: {}
+      },
+      onMounted() {
+        this.attachEvents()
+        this.update({ labels: getLabels() })
+      },
+      handleClose() {
+        this.update({ visible: false })
+      },
+      attachEvents() {
+        CONTROL.on(EVENTS.updateInfobox, data => {
+          this.update({ data, visible: true })
+        })
+        CONTROL.on(EVENTS.hideInfobox, this.handleClose)
+      },
+      f: formatNumber
+    }
+  </script>
+
+</mapple-infobox>

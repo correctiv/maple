@@ -1,5 +1,4 @@
 const Path = require('path')
-const Webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -26,9 +25,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: Path.resolve(__dirname, '../src/index.html')
     }),
-    new Webpack.ProvidePlugin({
-      riot: 'riot'
-    })
   ],
   resolve: {
     alias: {

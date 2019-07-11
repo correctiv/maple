@@ -1,4 +1,15 @@
-# Webpack Frontend Starterkit (including riotjs)
+# CORRECTIV.Mapple
+
+A prototype for rendering bivariate choropleth maps for european NUTS regions
+via a simple Google Spreadsheet.
+
+[See how it works](https://correctiv.github.io/mapple/)
+
+**TODO**: add NUTS2 level
+
+Based on [Webpack Frontend Starterkit (including riotjs)](https://github.com/simonwoerpel/webpack-es6-riotjs-startkit)
+
+## Webpack Frontend Starterkit (including riotjs)
 
 Based on https://github.com/wbkd/webpack-starter
 

@@ -1,0 +1,93 @@
+@import '../../scss/vars.scss';
+@import '../../scss/mixins.scss';
+@import '../../scss/components.scss';
+
+.mapple-infobox {
+
+  // FIXME
+  // @include visible(&);
+  display: none;
+  // width: 0;
+  // display: block;
+  // height: 0;
+  // overflow: hidden;
+  // opacity: 0;
+  // @include transition(opacity, $transition-duration);
+
+  &--visible {
+    display: block;
+    // min-height: 400px;
+    // opacity: 1;
+    // @include transition(opacity, $transition-duration);
+  }
+
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: $white-transp;
+  z-index: 1111;
+  box-shadow: $box-shadow;
+
+  @media (max-width: $screen-sm - 1) {
+    left: 10px;
+  }
+
+  @include bp-sm {
+    position: fixed;
+    top: 90px;
+    width: 300px;
+  }
+
+  &__section {
+    padding: 15px;
+    display: block;
+    border-top: dashed 1px $gray-light;
+
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    &-title {
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    dl {
+      display: block;
+      padding-right: 10px;
+      margin-bottom: 0;
+      float: left;
+
+      @include bp-sm {
+        padding-right: 20px;
+      }
+    }
+
+    dt {
+      font-size: 20px;
+      line-height: 1em;
+      font-weight: bold;
+
+      &.-small {
+        font-size: 12px;
+        padding-top: 0px;
+        color: $gray-dark;
+      }
+    }
+
+    dd {
+      margin: 0;
+      font-weight: normal;
+      line-height: 1.2em;
+    }
+
+    &--head {
+      background-color: $gray-lighter;
+    }
+  }
+
+  &__close-btn { @include close-btn; }
+}

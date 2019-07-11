@@ -1,0 +1,52 @@
+<mapple-searchbox class="mapple-searchbox">
+
+  <input type="text"
+    oninput={ doSearch } class="mapple-searchbox__input"
+    placeholder="Search for your country..."
+  />
+  <ul if={ state.results.length } class="mapple-searchbox__result-list">
+    <li each={ feature in state.results }
+      class="mapple-searchbox__result-list__item"
+      onclick={ () => handleOnClick(feature) }>
+      { feature.properties.name } <span>{ feature.properties.country }</span>
+    </li>
+  </ul>
+
+  <script>
+    import { CONTROL, EVENTS, STORE } from '~/events.js'
+
+    const search = str =>
+      STORE.data.features.filter(f => f.properties.search && f.properties.search.indexOf(str) > -1)
+
+    const jumpTo = ({ id, properties }) => {
+      CONTROL.trigger(EVENTS.hilight, id)
+      CONTROL.trigger(EVENTS.updateInfobox, properties)
+    }
+
+    export default {
+      state: {
+        results: []
+      },
+      onMounted() {
+        CONTROL.on(EVENTS.clearResults, this.clearResults)
+      },
+      doSearch(e) {
+        CONTROL.trigger(EVENTS.hideInfobox)
+        const str = e.target.value.toLowerCase()
+        if (str.length > 2) {
+          this.update({ results: search(str) })
+        } else {
+          this.clearResults()
+        }
+      },
+      handleOnClick(feature) {
+        this.clearResults()
+        jumpTo(feature)
+      },
+      clearResults() {
+        this.update({results: []})
+      }
+    }
+  </script>
+
+</mapple-searchbox>

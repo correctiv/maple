@@ -1,14 +1,14 @@
 {
-  "name": "webpack-es6-riotjs-startkit",
+  "name": "mapple",
   "version": "0.0.1",
-  "description": "Yet another webpack / riot / es6 startkit",
+  "description": "A prototype for rendering bivariate choropleth maps for european NUTS regions via a simple Google Spreadsheet",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.prod.js  --colors",
     "start": "webpack-dev-server --open --config webpack/webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simonwoerpel/webpack-es6-riotjs-startkit"
+    "url": "https://github.com/correctiv/mapple.git"
   },
   "keywords": [
     "webpack",
@@ -19,9 +19,9 @@
     "webdev"
   ],
   "author": "Simon Wörpel <simon.woerpel@medienrevolte.de>",
-  "license": "MIT",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/simonwoerpel/webpack-es6-riotjs-startkit/issues"
+    "url": "https://github.com/correctiv/mapple.git"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -51,8 +51,12 @@
     "@riotjs/hot-reload": "^4.0.0",
     "@riotjs/webpack-loader": "^4.0.1",
     "core-js": "^3.0.1",
-    "dsv-loader": "^2.0.0",
+    "d3": "^5.9.2",
+    "html-loader": "^0.5.5",
+    "markdown-loader": "^5.0.0",
     "raw-loader": "^3.0.0",
-    "riot": "^4.1.1"
+    "riot": "^4.1.1",
+    "riot-observable": "^3.0.0",
+    "topojson": "^3.0.2"
   }
 }

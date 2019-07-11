@@ -1,0 +1,55 @@
+@import '../../scss/vars.scss';
+@import '../../scss/mixins.scss';
+
+.mapple-searchbox {
+  position: fixed;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  z-index: 1110;
+
+  @include bp-sm {
+    position: fixed;
+    width: 300px;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__input {
+    display: block;
+    width: 292px;
+    padding: 3px;
+    font-size: 15px;
+  }
+
+  &__result-list {
+    position: absolute;
+    top: 34px;
+    display: block;
+    width: 100%;
+    background-color: $white-transp;
+    box-shadow: $box-shadow;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    z-index: 100;
+
+    &__item {
+      cursor: pointer;
+      padding: 10px;
+      list-style: none;
+      @include transition(background-color, $transition-duration);
+
+      span {
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      &:hover {
+        @include transition(background-color, $transition-duration);
+        background-color: $gray-light;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,27 @@
+<bivariate-map>
+  <div class="mapple-bivariate-map__svg-wrapper" id="mapple-svg-container" />
+
+  <script>
+    import { CONTROL, EVENTS } from '~/events.js'
+    import renderMap from './render.js'
+    import { hilight, unhilight } from './hilight.js'
+
+    export default {
+      state: {
+        hilighted: null
+      },
+      onMounted() {
+        this.selection = renderMap('#mapple-svg-container')
+        this.attachEvents()
+      },
+      attachEvents() {
+        CONTROL.on(EVENTS.hilight, id => {
+          this.update({
+            hilighted: hilight(this.selection, id, this.state.hilighted)
+          })
+        })
+        CONTROL.on(EVENTS.unhilight, () => unhilight(this.state.hilighted))
+      }
+    }
+  </script>
+</bivariate-map>

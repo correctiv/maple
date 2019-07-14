@@ -83,7 +83,7 @@ const validateData = (config, data, cb) => {
       return false
     } else if (config[k].map) {
       config[k].map(i => {
-        !i && CONTROL.trigger(EVENTS.error, dataError)
+        i !== 0 && !i && CONTROL.trigger(EVENTS.error, dataError)
         return false
       })
     }

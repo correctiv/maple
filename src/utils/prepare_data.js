@@ -29,15 +29,25 @@ export default (data, config) => {
 
   // colors
   const colors = {
-    X1Y1: '#e8e6f2',
-    X1Y2: '#b5d3e7',
-    X1Y3: '#4fadd0',
-    X2Y1: '#e5b4d9',
-    X2Y2: '#b8b3d8',
-    X2Y3: '#3983bb',
-    X3Y1: '#de4fa6',
-    X3Y2: '#b03598',
-    X3Y3: '#2a1a8a'
+    // http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/
+    // X1Y1: '#e8e6f2',
+    // X1Y2: '#b5d3e7',
+    // X1Y3: '#4fadd0',
+    // X2Y1: '#e5b4d9',
+    // X2Y2: '#b8b3d8',
+    // X2Y3: '#3983bb',
+    // X3Y1: '#de4fa6',
+    // X3Y2: '#b03598',
+    // X3Y3: '#2a1a8a'
+    X1Y1: '#e8e8e8',
+    X1Y2: '#b0d5df',
+    X1Y3: '#64acbe',
+    X2Y1: '#e4acac',
+    X2Y2: '#ad9ea5',
+    X2Y3: '#627f8c',
+    X3Y1: '#c85a5a',
+    X3Y2: '#985356',
+    X3Y3: '#574249'
   }
 
   // add color based on buckets

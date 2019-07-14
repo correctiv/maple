@@ -11,6 +11,7 @@ const geoMerge = ({ data, x, y, name, country }) => {
     const id = f.properties.NUTS_ID
     const d = data[id]
     if (d) {
+      f.active = true
       f.properties.x = x(d)
       f.properties.y = y(d)
       const _name = name(d)
@@ -21,8 +22,8 @@ const geoMerge = ({ data, x, y, name, country }) => {
       f.properties.search =
         _name.toLowerCase() + _country.toLowerCase() + id.toLowerCase()
       f.color = d.color
-      f.active = true
     } else {
+      // empty data
       f.color = '#f5f5f5'
     }
     return f
@@ -30,7 +31,7 @@ const geoMerge = ({ data, x, y, name, country }) => {
 
   if (STORE.config.hide_empty === 'yes') {
     // filter out features w/o data (they don't exist in spreadsheet)
-    STORE.data.features = STORE.data.features.filter(f => !!f.color)
+    STORE.data.features = STORE.data.features.filter(f => f.active)
   }
 }
 

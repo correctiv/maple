@@ -40,7 +40,8 @@ Please use our template spreadsheets with example data:
 
 <mapple-examples></mapple-examples>
 
-Copy the spreadsheet you need into your account and edit it.
+Copy the spreadsheet you need into your account and edit it
+("Edit" > "Make a copy").
 
 You find three Sheets: *Data*, *Config* and *Names*
 

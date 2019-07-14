@@ -15,7 +15,7 @@
     <mapple-legend class="mapple-legend" style={ state.adjust.legend } />
   </div>
   <footer if={ props.embed } class="mapple-footer">
-    <img src="/media/img/logo.svg" class="mapple-footer__logo" />
+    <img src={ logo } class="mapple-footer__logo" />
   </footer>
 
   <script>
@@ -25,6 +25,7 @@
     import MappleLegend from '~/components/legend/legend.riot'
     import MappleHeader from '~/components/header/header.riot'
     import { STORE, CONTROL, EVENTS } from '~/events.js'
+    import logo from '~/img/logo.svg'
 
     // adjust positions of Infobox, Searchbox, Legend
     const adjustPositions = width => {
@@ -40,6 +41,7 @@
     }
 
     export default {
+      logo,
       state: {
         adjust: {
           header: null,

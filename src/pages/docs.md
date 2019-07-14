@@ -88,7 +88,7 @@ Copy the url of your Google spreadsheet into this field:
 
 Find the `ID` of your spreadsheet. Simply look in the url for this part:
 
-![how to find the google id](/media/img/gid.png)
+![how to find the google id](gid.png)
 
 Copy this id and append it with a `?` to `{{ BASE_URL }}`, like this:
 

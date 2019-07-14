@@ -20,11 +20,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../media'), to: 'media' }
+      { from: Path.resolve(__dirname, '../src/img'), to: 'img' }
     ]),
     new HtmlWebpackPlugin({
       template: Path.resolve(__dirname, '../src/index.html')
-    }),
+    })
   ],
   resolve: {
     alias: {
@@ -39,12 +39,22 @@ module.exports = {
         type: 'javascript/auto'
       },
       {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'img:data-src', 'img:srcset', 'source:srcset'],
+            root: '.'
+          }
+        }
+      },
+      {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
         use: {
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]'
-          }
+          loader: 'url-loader'
+          // options: {
+          //   name: '[path][name].[ext]'
+          // }
         }
       }
     ]

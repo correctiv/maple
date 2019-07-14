@@ -59,6 +59,7 @@
     "raw-loader": "^3.0.0",
     "riot": "^4.1.1",
     "riot-observable": "^3.0.0",
-    "topojson": "^3.0.2"
+    "topojson": "^3.0.2",
+    "url-loader": "^2.0.1"
   }
 }

@@ -86,6 +86,14 @@
     &--head {
       background-color: $gray-lighter;
     }
+
+    &--data {
+      color: $gray;
+      font-size: 13px;
+       a {
+        color: $gray-dark;
+       }
+    }
   }
 
   &__close-btn { @include close-btn; }

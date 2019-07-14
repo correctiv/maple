@@ -9,44 +9,41 @@
   </header>
 
   <section class="mapple-infobox__section">
-    <h3 class="mapple-infobox__section-title">{ state.labels.title }</h3>
-    <p class="mapple-infobox__description">{ state.labels.description }</h3>
+    <h3 class="mapple-infobox__section-title">{ state.txt.tooltip_title }</h3>
+    <p class="mapple-infobox__description">{ state.txt.tooltip_description }</h3>
     <dl>
-      <dt>{ f(state.data.x) } { state.labels.xUnit }</dt>
-      <dd>{ state.labels.x }</dd>
+      <dt>{ f(state.data.x) } { state.txt.unit1 }</dt>
+      <dd>{ state.txt.value1_label }</dd>
     </dl>
     <dl>
-      <dt>{ f(state.data.y) } { state.labels.yUnit }</dt>
-      <dd>{ state.labels.y }</dd>
+      <dt>{ f(state.data.y) } { state.txt.unit2 }</dt>
+      <dd>{ state.txt.value2_label }</dd>
     </dl>
+  </section>
+
+  <section class="mapple-infobox__section mapple-infobox__section--data">
+    <strong>{ state.txt.value1_label }: </strong>
+    <a href={ state.txt.data1_url }>{ state.txt.data1_info }</a><br>
+      <strong>{ state.txt.value2_label }: </strong>
+    <a href={ state.txt.data2_url }>{ state.txt.data2_info }</a><br><br>
+    <a href={ state.googleUrl }>View spreadsheet</a>
   </section>
 
   <script>
     import { CONTROL, EVENTS, STORE } from '~/events.js'
     import { formatNumber } from './utils.js'
 
-    const getLabels = () => {
-      const { config } = STORE
-      return {
-        x: config.value1_label,
-        y: config.value2_label,
-        title: config.tooltip_title,
-        description: config.tooltip_description,
-        xUnit: config.unit1,
-        yUnit: config.unit2
-      }
-    }
-
     export default {
       state: {
         visible: false,
         data: {},
-        labels: {}
+        txt: {}
       },
       onMounted() {
         this.attachEvents()
         this.update({
-          labels: getLabels(),
+          googleUrl: STORE.googleUrl,
+          txt: STORE.config,
           showCountry: STORE.config.nuts_level.indexOf('0') < 0
         })
       },

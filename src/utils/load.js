@@ -1,9 +1,10 @@
 import * as d3 from 'd3'
 import geoData from '~/data/geodata.js'
-import { CONTROL, EVENTS } from '~/events.js'
+import { CONTROL, EVENTS, STORE } from '~/events.js'
 
 const loadSpreadsheet = (gId, sheet, cb) => {
   const url = `https://docs.google.com/spreadsheets/d/${gId}/gviz/tq?tqx=out:csv&sheet=${sheet}`
+  STORE.googleUrl = `https://docs.google.com/spreadsheets/d/${gId}/`
   d3.csv(url)
     .then(data => cb(data))
     .catch(e =>
@@ -34,9 +35,13 @@ const configKeys = [
   'value1',
   'value1_label',
   'unit1',
+  'data1_info',
+  'data1_url',
   'value2',
   'value2_label',
   'unit2',
+  'data2_info',
+  'data2_url',
   'hide_empty',
   'tooltip_title',
   'tooltip_description',

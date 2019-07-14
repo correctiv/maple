@@ -3,14 +3,17 @@
 
 .mapple-legend {
   display: block;
-  width: 100%;
+  width: 140px;
+  margin-right: 0;
+  margin-left: auto;
   position: relative;
 
   @include bp-sm {
+    margin-left: 160px; // infobox width 300px
+    margin-right: 0;
     position: fixed;
-    left: 10px;
+    right: 10px;
     bottom: 10px;
-    width: 140px;
   }
 
   &__square {
@@ -47,15 +50,23 @@
 
     // label 1
     &--x {
-      bottom: 5px;
       left: 20px;
+      bottom: -15px;
+
+      @include bp-sm {
+        bottom: 5px;
+      }
     }
 
     // label 2
     &--y {
       transform: rotate(-90deg);
-      bottom: 60px;
+      bottom: 40px;
       left: -35px;
+
+      @include bp-sm {
+        bottom: 60px;
+      }
     }
   }
 

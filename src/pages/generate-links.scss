@@ -1,0 +1,39 @@
+@import '../scss/vars.scss';
+
+.mapple-generate-links {
+  display: block;
+  width: 100%;
+
+  &__input-wrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    display: block;
+    padding: 3px;
+  }
+
+  &__button {
+    height: 43px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__result {
+    padding-top: 10px;
+  }
+
+  &__loading {
+    display: block;
+    height: 100px;
+    width: 100%;
+    background: url(/media/img/loading.gif) center no-repeat;
+  }
+
+  &__error {
+    color: $red;
+  }
+}

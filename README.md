@@ -5,7 +5,12 @@ via a simple Google Spreadsheet.
 
 [See how it works](https://correctiv.github.io/mapple/)
 
-**TODO**: add NUTS2 level
+The urls to the Google Spreadsheet templates are located in `src/pages/examples.js`
+
+The index page (documentation) is a markdown that is located in `src/pags/docs.md`
+
+The shapefiles are [obtained from Eurostat](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts),
+a bit cropped, simplified and compressed to [topojson](https://github.com/topojson/topojson).
 
 Based on [Webpack Frontend Starterkit (including riotjs)](https://github.com/simonwoerpel/webpack-es6-riotjs-startkit)
 

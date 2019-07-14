@@ -16,7 +16,15 @@
   </div>
 
   <script>
+    import * as riot from 'riot'
+    import { STORE, CONTROL, EVENTS } from '~/events.js'
+    import MappleExamples from './examples.riot'
+    import MappleGenerateLinks from './generate-links.riot'
+    import examples from './examples.js'
+
     const content = require('html-loader!markdown-loader!./docs.md')
+    .replace(/{{ BASE_URL }}/g, STORE.baseUrl)
+    .replace(/{{ EXAMPLE_GID }}/g, examples.nuts3.gid)
 
     const loadCss = url => {
       const link = document.createElement('link')
@@ -30,6 +38,11 @@
       onMounted() {
         this.$('section#inner-content').innerHTML = content
         loadCss(this.props.cssUrl)
+        riot.register('mapple-examples', MappleExamples)
+        riot.register('mapple-generate-links', MappleGenerateLinks)
+        riot.mount('mapple-examples')
+        riot.mount('mapple-generate-links')
+        CONTROL.trigger(EVENTS.loaded)
       }
     }
   </script>

@@ -1,0 +1,46 @@
+<mapple-generate-links class="mapple-generate-links">
+  <div class="mapple-generate-links__input-wrapper">
+    <input type="text" class="form__text mapple-generate-links__input" required />
+    <button onclick={ handleOnClick } class="button mapple-generate-links__button">
+      Generate!
+    </button>
+    <div if={ state.loading } class="mapple-generate-links__loading" />
+  </div>
+  <div if={ state.gId && noError() } class="mapple-generate-links__result">
+    Direct url: <a href="{ state.directUrl }">{ state.directUrl }</a><br>
+    Iframe url: <a href="{ state.iframeUrl }">{ state.iframeUrl }</a><br>
+    Iframe embed: <pre><code>{ state.iframe } </code></pre>
+  </div>
+  <span if={ state.error } class="mapple-generate-links__error">
+    { state.error.msg }<br>
+    <strong>{ state.error.code }</strong>
+  </span>
+  <span if={ state.urlError } class="mapple-generate-links__error">
+    This didn't work (your url seems not to be correct). Try the steps below.
+  </span>
+
+  <script>
+    import { STORE, EVENTS, CONTROL } from '~/events.js'
+    import handleState from './generate_links.js'
+
+    export default {
+      state: {
+        gId: false,
+        error: false,
+        urlError: false,
+        loading: false
+      },
+      onMounted() {
+        CONTROL.on(EVENTS.error, error => this.update({ error, loading: false }))
+      },
+      handleOnClick() {
+        this.update({ loading: true, error: false })
+        const gId = this.$('input').value.split('/')[5]
+        handleState(gId, state => this.update(state))
+      },
+      noError() {
+        return !this.state.error && !this.state.urlError
+      }
+    }
+  </script>
+</mapple-generate-links>

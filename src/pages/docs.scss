@@ -1,9 +1,18 @@
+@import '../scss/vars.scss';
+
 // some overrides over the global CORRECTIV css injected via js
 #mapple {
   .mapple-docs {
     .container {
       width: 80%;
       max-width: 986px;
+
+      pre {
+        font-size: 14px;
+        background-color: $gray-lighter;
+        border: 1px solid $gray-light;
+        padding: 5px;
+      }
     }
   }
 }

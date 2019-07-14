@@ -1,14 +1,22 @@
 <mapple>
-  <mapple-header class="mapple-header" />
-  <section class="mapple__map-header">
-    <h2 class="mapple__map-title">{ state.title }</h2>
-    <p class="mapple__map-intro">{ state.intro }</p>
-  </section>
-  <bivariate-map class="mapple-bivariate-map"
-    style="max-width:{ state.app_maxwidth };" />
-  <mapple-infobox class="mapple-infobox" />
-  <mapple-searchbox class="mapple-searchbox" />
-  <mapple-legend class="mapple-legend "/>
+  <mapple-header if={ !props.embed } class="mapple-header" />
+  <div if={ !state.error }>
+    <section class="mapple__map-header
+      { props.embed ? 'mapple__map-header--embed' : null }"
+      style={ state.adjust.header }>
+      <h2 class="mapple__map-title">{ state.title }</h2>
+      <p class="mapple__map-intro">{ state.intro }</p>
+    </section>
+    <bivariate-map class="mapple-bivariate-map
+      { props.embed ? 'mapple-bivariate-map--embed' : null }"
+      style="max-width:{ state.app_maxwidth };" />
+    <mapple-searchbox class="mapple-searchbox" style={ state.adjust.searchbox }/>
+    <mapple-infobox class="mapple-infobox" style={ state.adjust.infobox } />
+    <mapple-legend class="mapple-legend" style={ state.adjust.legend } />
+  </div>
+  <footer if={ props.embed } class="mapple-footer">
+    <img src="/media/img/logo.svg" class="mapple-footer__logo" />
+  </footer>
 
   <script>
     import BivariateMap from '~/components/bivariate-map/bivariate-map.riot'
@@ -16,10 +24,30 @@
     import MappleSearchbox from '~/components/searchbox/searchbox.riot'
     import MappleLegend from '~/components/legend/legend.riot'
     import MappleHeader from '~/components/header/header.riot'
-    import { STORE } from '~/events.js'
+    import { STORE, CONTROL, EVENTS } from '~/events.js'
+
+    // adjust positions of Infobox, Searchbox, Legend
+    const adjustPositions = width => {
+      const maxWidth = parseInt(STORE.config.app_maxwidth.replace('px', ''))
+      if (maxWidth + 300 < width) {
+        return {
+          header: `width:${maxWidth / 2}px;`,
+          infobox: `left:${maxWidth}px;`,
+          searchbox: `left:${maxWidth}px;`,
+          legend: `left:${maxWidth}px;`
+        }
+      }
+    }
 
     export default {
-      state: {},
+      state: {
+        adjust: {
+          header: null,
+          infobox: null,
+          searchbox: null,
+          legend: null
+        }
+      },
       components: {
         BivariateMap,
         MappleInfobox,
@@ -28,7 +56,11 @@
         MappleHeader
       },
       onMounted() {
-        this.update(STORE.config)
+        this.update({...STORE.config, error: STORE.error })
+        const adjust = adjustPositions(this.root.offsetWidth)
+        !this.props.embed && adjust && this.update({ adjust })
+        CONTROL.trigger(EVENTS.loaded)
+        CONTROL.on(EVENTS.error, error => this.update(error))
       }
     }
 

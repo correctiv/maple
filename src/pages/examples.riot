@@ -1,0 +1,19 @@
+<mapple-examples>
+  <ul>
+    <li each={ example in examples }>
+      <a href="https://docs.google.com/spreadsheets/d/{ example.gid }">
+        Template { example.name } - { example.label }
+      </a> [<a href="{ baseUrl }?{ example.gid }">view example map</a>]
+    </li>
+  </ul>
+
+  <script>
+    import { STORE } from '~/events.js'
+    import examples from './examples.js'
+
+    export default {
+      examples: Object.keys(examples).map(k => examples[k]),
+      baseUrl: STORE.baseUrl
+    }
+  </script>
+</mapple-examples>

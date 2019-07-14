@@ -3,7 +3,8 @@
   <button class="mapple-infobox__close-btn" aria-label='Close' onclick={ handleClose }></button>
 
   <header class="mapple-infobox__section mapple-infobox__section--head">
-    <span class="mapple-infobox__section-subtitle">{ state.data.country }</span>
+    <span if={ state.showCountry } class="mapple-infobox__section-subtitle">
+      { state.data.country }</span>
     <h3 class="mapple-infobox__section-title">{ state.data.name }</h3>
   </header>
 
@@ -11,11 +12,11 @@
     <h3 class="mapple-infobox__section-title">{ state.labels.title }</h3>
     <p class="mapple-infobox__description">{ state.labels.description }</h3>
     <dl>
-      <dt>{ f(state.data.x) } { state.labels.unit }</dt>
+      <dt>{ f(state.data.x) } { state.labels.xUnit }</dt>
       <dd>{ state.labels.x }</dd>
     </dl>
     <dl>
-      <dt>{ f(state.data.y) } { state.labels.unit }</dt>
+      <dt>{ f(state.data.y) } { state.labels.yUnit }</dt>
       <dd>{ state.labels.y }</dd>
     </dl>
   </section>
@@ -31,7 +32,8 @@
         y: config.value2_label,
         title: config.tooltip_title,
         description: config.tooltip_description,
-        unit: config.unit
+        xUnit: config.unit1,
+        yUnit: config.unit2
       }
     }
 
@@ -43,7 +45,10 @@
       },
       onMounted() {
         this.attachEvents()
-        this.update({ labels: getLabels() })
+        this.update({
+          labels: getLabels(),
+          showCountry: STORE.config.nuts_level.indexOf('0') < 0
+        })
       },
       handleClose() {
         this.update({ visible: false })

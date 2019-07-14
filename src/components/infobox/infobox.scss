@@ -21,8 +21,8 @@
     // @include transition(opacity, $transition-duration);
   }
 
-  position: absolute;
-  top: 50px;
+  position: fixed;
+  top: 90px;
   right: 10px;
   background-color: $white-transp;
   z-index: 1111;
@@ -33,7 +33,6 @@
   }
 
   @include bp-sm {
-    position: fixed;
     top: 90px;
     width: 300px;
   }

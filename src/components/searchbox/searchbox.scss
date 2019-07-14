@@ -2,13 +2,13 @@
 @import '../../scss/mixins.scss';
 
 .mapple-searchbox {
-  position: fixed;
   display: block;
   margin-bottom: 10px;
-  width: 100%;
   z-index: 1110;
+  padding: 10px;
 
   @include bp-sm {
+    padding: 0;
     position: fixed;
     width: 300px;
     top: 10px;
@@ -17,14 +17,16 @@
 
   &__input {
     display: block;
-    width: 292px;
     padding: 3px;
     font-size: 15px;
+    width: 100%;
+
+    @include bp-sm {
+      width: 292px;
+    }
   }
 
   &__result-list {
-    position: absolute;
-    top: 34px;
     display: block;
     width: 100%;
     background-color: $white-transp;
@@ -33,6 +35,11 @@
     margin-top: 10px;
     padding: 0;
     z-index: 100;
+
+    @include bp-sm {
+      position: absolute;
+      top: 34px;
+    }
 
     &__item {
       cursor: pointer;

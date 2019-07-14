@@ -1,22 +1,9 @@
-import * as d3 from 'd3'
-import { STORE } from '~/events.js'
+import { STORE, CONTROL, EVENTS } from '~/events.js'
 import geoData from '~/data/geodata.js'
 import prepareData from './prepare_data.js'
+import { loadSpreadsheet, validateConfig, validateData } from './load.js'
 
-const loadSpreadsheet = (id, sheet, cb) => {
-  const url = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${sheet}`
-  d3.csv(url).then(data => cb(data))
-}
-
-const pivot = data => {
-  const _data = {}
-  data.map(({ key, value }) => {
-    _data[key] = value
-  })
-  return _data
-}
-
-const geoMerge = ({ data, x, y, name, country }, nuts_level) => {
+const geoMerge = ({ data, x, y, name, country }) => {
   // init store
   STORE.data = geoData[STORE.config.nuts_level]
 
@@ -34,21 +21,46 @@ const geoMerge = ({ data, x, y, name, country }, nuts_level) => {
       f.properties.search =
         _name.toLowerCase() + _country.toLowerCase() + id.toLowerCase()
       f.color = d.color
+      f.active = true
+    } else {
+      f.color = '#f5f5f5'
     }
     return f
   })
+
+  if (STORE.config.hide_empty === 'yes') {
+    // filter out features w/o data (they don't exist in spreadsheet)
+    STORE.data.features = STORE.data.features.filter(f => !!f.color)
+  }
 }
 
+// it may be that we already have errors before the app is mounted,
+// then do this:
+CONTROL.on(EVENTS.error, ({ code, msg }) => {
+  CONTROL.trigger(EVENTS.loaded) // end loading spinner
+  const mapple = document.getElementById('mapple')
+  if (mapple.innerHTML === '') {
+    // app not mounted
+    mapple.innerHTML = `<div class="mapple-error">
+      ${msg}:<br><strong>${code}</strong></div>`
+  }
+})
+
 export default (gId, cb) => {
-  loadSpreadsheet(gId, 'Config', _config => {
-    loadSpreadsheet(gId, 'Data', _data => {
-      const { data, config, x, y, name, country } = prepareData(
-        _data,
-        pivot(_config)
-      )
-      STORE.config = config
-      geoMerge({ data, x, y, name, country })
-      cb()
+  // these functions may throw errors via the event bus
+  loadSpreadsheet(gId, 'Config', configData => {
+    validateConfig(configData, _config => {
+      loadSpreadsheet(gId, 'Data', _data => {
+        const { data, config, x, y, name, country } = prepareData(
+          _data,
+          _config
+        )
+        validateData(config, data, () => {
+          STORE.config = config
+          geoMerge({ data, x, y, name, country })
+          cb()
+        })
+      })
     })
   })
 }

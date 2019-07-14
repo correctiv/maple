@@ -1,4 +1,12 @@
 <mapple-header class="mapple-header">
-  <a href="/" class="mapple-header__logo" />
-  <a href="/" class="mapple-header__help-link">Help</a>
+  <a href="{ baseUrl }" class="mapple-header__logo" />
+  <a href="{ baseUrl }" class="mapple-header__help-link">Create your own map!</a>
+
+  <script>
+    import { STORE } from '~/events.js'
+
+    export default {
+      baseUrl: STORE.baseUrl
+    }
+  </script>
 </mapple-header>

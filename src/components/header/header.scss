@@ -1,4 +1,5 @@
 @import '../../scss/vars.scss';
+@import '../../scss/mixins.scss';
 
 .mapple-header {
   z-index: 1000;
@@ -29,8 +30,13 @@
     line-height: 60px;
     width: auto;
     text-align: center;
-    left: 50%;
-    position: absolute;
     color: black;
+    position: absolute;
+    right: 10px;
+
+    @include bp-sm {
+      left: 30%;
+      right: auto;
+    }
   }
 }

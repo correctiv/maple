@@ -10,7 +10,8 @@ const loadSpreadsheet = (gId, sheet, cb) => {
     .catch(e =>
       CONTROL.trigger(EVENTS.error, {
         code: e,
-        msg: `There was an error loading your spreadsheet with id ${gId}`
+        msg: `There was an error loading your spreadsheet with id ${gId}.
+          Please make sure that your spreadsheet is "public to anyone with the link".`
       })
     )
 }

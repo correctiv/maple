@@ -2,22 +2,18 @@ import * as d3 from 'd3'
 
 export default (data, config) => {
   // accessors
-  const x = d => d[config.value1]
-  const y = d => d[config.value2]
+  const x = d => Number(d[config.value1])
+  const y = d => Number(d[config.value2])
   const id = d => d[config.nuts_id]
   const name = d => d[config.nuts_name]
   const country = d => d[config.cntr_name]
 
-  // parse numbers
-  data = data.map(d => {
-    d[config.value1] = Number(x(d))
-    d[config.value2] = Number(y(d))
-    return d
-  })
+  // filter out empty data
+  data = data.filter(d => x(d) && y(d))
 
   // calculate bivariate
-  const extentX = d3.extent(data, d => d[config.value1])
-  const extentY = d3.extent(data, d => d[config.value2])
+  const extentX = d3.extent(data, x)
+  const extentY = d3.extent(data, y)
   const getXBucket = d3
     .scaleQuantile()
     .domain(extentX)

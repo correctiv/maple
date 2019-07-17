@@ -39,6 +39,7 @@
 
   @include bp-sm {
     padding-top: 120px;
+    padding-bottom: 90px;
   }
 
   &__path {
@@ -47,7 +48,8 @@
 
     &.-hilight {
       stroke-width: 2px;
-      stroke: $red;
+      stroke: $blue;
+      // stroke: $red;
       // stroke: $gray-lighter;
     }
 

@@ -50,13 +50,14 @@ html, body {
   position: relative; }
   @media (min-width: 768px) {
     .maple-bivariate-map {
-      padding-top: 120px; } }
+      padding-top: 120px;
+      padding-bottom: 90px; } }
   .maple-bivariate-map__path {
     stroke: #f5f5f5;
     stroke-width: 1px; }
     .maple-bivariate-map__path.-hilight {
       stroke-width: 2px;
-      stroke: #ff5064; }
+      stroke: #1e4664; }
     .maple-bivariate-map__path.-inactive {
       stroke: #dadada; }
 
@@ -191,20 +192,19 @@ html, body {
 .maple-legend {
   display: block;
   width: 140px;
-  margin-right: 0;
-  margin-left: auto;
-  position: relative; }
+  position: relative;
+  width: 200px;
+  margin: auto; }
   @media (min-width: 768px) {
     .maple-legend {
-      margin-left: 160px;
       margin-right: 0;
       position: fixed;
       right: 10px;
       bottom: 10px; } }
   .maple-legend__square {
     display: block;
-    width: 90px;
-    height: 90px;
+    width: 180px;
+    height: 180px;
     margin: 10px 0 20px 20px;
     position: relative; }
   .maple-legend__label {
@@ -212,7 +212,7 @@ html, body {
     line-height: 12px;
     position: absolute;
     display: inline-block;
-    width: 90px;
+    width: 180px;
     text-align: center; }
     .maple-legend__label em {
       position: absolute;
@@ -231,48 +231,58 @@ html, body {
           bottom: 5px; } }
     .maple-legend__label--y {
       transform: rotate(-90deg);
-      bottom: 40px;
-      left: -35px; }
+      bottom: 85px;
+      left: -80px; }
       @media (min-width: 768px) {
         .maple-legend__label--y {
-          bottom: 60px; } }
+          bottom: 105px; } }
   .maple-legend__item {
     display: block;
-    width: 30px;
-    height: 30px;
-    position: absolute; }
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    z-index: 100; }
+    .maple-legend__item.-hilight {
+      border: 2px solid white;
+      z-index: 1000;
+      width: 56px;
+      height: 56px; }
     .maple-legend__item--X1Y1 {
       bottom: 0;
       left: 0; }
     .maple-legend__item--X2Y1 {
       bottom: 0;
-      left: 30px; }
+      left: 60px; }
     .maple-legend__item--X3Y1 {
       bottom: 0;
-      left: 60px; }
+      left: 120px; }
     .maple-legend__item--X1Y2 {
-      bottom: 30px;
+      bottom: 60px;
       left: 0; }
     .maple-legend__item--X2Y2 {
-      bottom: 30px;
-      left: 30px; }
-    .maple-legend__item--X3Y2 {
-      bottom: 30px;
-      left: 60px; }
-    .maple-legend__item--X1Y3 {
       bottom: 60px;
+      left: 60px; }
+    .maple-legend__item--X3Y2 {
+      bottom: 60px;
+      left: 120px; }
+    .maple-legend__item--X1Y3 {
+      bottom: 120px;
       left: 0; }
     .maple-legend__item--X2Y3 {
-      bottom: 60px;
-      left: 30px; }
-    .maple-legend__item--X3Y3 {
-      bottom: 60px;
+      bottom: 120px;
       left: 60px; }
+    .maple-legend__item--X3Y3 {
+      bottom: 120px;
+      left: 120px; }
   .maple-legend__annotation {
+    text-align: center;
     font-weight: bold;
     display: block;
     font-size: 14px;
     border-bottom: 1px solid #9c9c9c; }
+    @media (min-width: 768px) {
+      .maple-legend__annotation {
+        text-align: right; } }
 
 .maple-header {
   z-index: 1000;
@@ -350,4 +360,4 @@ html, body {
     color: #ff5064; }
 
 
-/*# sourceMappingURL=maple-5884f13926cc7bcaef8d.css.map*/
+/*# sourceMappingURL=maple-8c06e6a99149fa222825.css.map*/

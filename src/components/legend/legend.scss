@@ -4,12 +4,11 @@
 .maple-legend {
   display: block;
   width: 140px;
-  margin-right: 0;
-  margin-left: auto;
   position: relative;
+  width: 200px;
+  margin: auto;
 
   @include bp-sm {
-    margin-left: 160px; // infobox width 300px
     margin-right: 0;
     position: fixed;
     right: 10px;
@@ -18,8 +17,8 @@
 
   &__square {
     display: block;
-    width: 90px;
-    height: 90px;
+    width: 180px;
+    height: 180px;
     margin: 10px 0 20px 20px;
     position: relative;
   }
@@ -29,7 +28,7 @@
     line-height: 12px;
     position: absolute;
     display: inline-block;
-    width: 90px;
+    width: 180px;
     text-align: center;
 
     // value extent
@@ -61,20 +60,28 @@
     // label 2
     &--y {
       transform: rotate(-90deg);
-      bottom: 40px;
-      left: -35px;
+      bottom: 85px;
+      left: -80px;
 
       @include bp-sm {
-        bottom: 60px;
+        bottom: 105px;
       }
     }
   }
 
   &__item {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     position: absolute;
+    z-index: 100;
+
+    &.-hilight {
+      border: 2px solid white;
+      z-index: 1000;
+      width: 56px;
+      height: 56px;
+    }
 
     &--X1Y1 {
       bottom: 0;
@@ -83,50 +90,54 @@
 
     &--X2Y1 {
       bottom: 0;
-      left: 30px;
+      left: 60px;
     }
 
     &--X3Y1 {
       bottom: 0;
-      left: 60px;
+      left: 120px;
     }
 
     &--X1Y2 {
-      bottom: 30px;
+      bottom: 60px;
       left: 0;
     }
 
     &--X2Y2 {
-      bottom: 30px;
-      left: 30px;
-    }
-
-    &--X3Y2 {
-      bottom: 30px;
+      bottom: 60px;
       left: 60px;
     }
 
-    &--X1Y3 {
+    &--X3Y2 {
       bottom: 60px;
+      left: 120px;
+    }
+
+    &--X1Y3 {
+      bottom: 120px;
       left: 0;
     }
 
     &--X2Y3 {
-      bottom: 60px;
-      left: 30px;
+      bottom: 120px;
+      left: 60px;
     }
 
     &--X3Y3 {
-      bottom: 60px;
-      left: 60px;
+      bottom: 120px;
+      left: 120px;
     }
   }
 
   &__annotation {
-    // text-align: center;
+    text-align: center;
     font-weight: bold;
     display: block;
     font-size: 14px;
     border-bottom: 1px solid $gray;
+
+    @include bp-sm {
+      text-align: right;
+    }
   }
 }

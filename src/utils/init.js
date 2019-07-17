@@ -22,6 +22,7 @@ const geoMerge = ({ data, x, y, name, country }) => {
       f.properties.search =
         _name.toLowerCase() + _country.toLowerCase() + id.toLowerCase()
       f.color = d.color
+      f.properties.bucket = d.bucket
     } else {
       // empty data
       f.color = '#f5f5f5'

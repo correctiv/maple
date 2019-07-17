@@ -13,17 +13,19 @@
   </span>
   <span class="maple-legend__square">
     <span each={ tick in state.ticks }
-      class="maple-legend__item maple-legend__item--{ tick.id }"
+      id={ tick.id }
+      class="maple-legend__item maple-legend__item--{ tick.id } { state.hilighted === tick.id ? '-hilight' : null }"
       style="background-color:{ tick.color };"></span>
   </span>
 
   <script>
-    import { STORE } from '~/events.js'
+    import { STORE, CONTROL, EVENTS } from '~/events.js'
 
     export default {
       state: {
         extentX: [],
-        extentY: []
+        extentY: [],
+        hilighted: null
       },
       onMounted() {
         const ticks = Object.keys(STORE.config.colors).map(k => {
@@ -33,6 +35,7 @@
           }
         })
         this.update({ ...STORE.config, ticks })
+        CONTROL.on(EVENTS.updateInfobox, ({ bucket }) => this.update({ hilighted: bucket }))
       }
     }
   </script>

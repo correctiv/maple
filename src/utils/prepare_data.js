@@ -50,7 +50,9 @@ export default (data, config) => {
   data.map(d => {
     const xBucket = getXBucket(x(d))
     const yBucket = getYBucket(y(d))
-    d.color = colors[xBucket + yBucket]
+    const bucket = xBucket + yBucket
+    d.color = colors[bucket]
+    d.bucket = bucket
   })
 
   config.extentX = extentX

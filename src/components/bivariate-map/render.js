@@ -13,7 +13,7 @@ export default selector => {
 
   const svg = element
     .append('svg')
-    .attr('class', 'mapple-bivariate-map__svg')
+    .attr('class', 'maple-bivariate-map__svg')
     .attr('preserveAspectRatio', 'xMinYMin meet')
     .attr('viewBox', '0 0 1024 1024')
   // .call(d3.zoom().on('zoom', function () {
@@ -30,7 +30,7 @@ export default selector => {
     .attr(
       'class',
       ({ active }) =>
-        `mapple-bivariate-map__path ${!active ? '-inactive' : null}`
+        `maple-bivariate-map__path ${!active ? '-inactive' : null}`
     )
     .attr('fill', ({ color }) => color)
     .on('mouseover', d => {

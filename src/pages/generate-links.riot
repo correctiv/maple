@@ -1,21 +1,21 @@
-<mapple-generate-links class="mapple-generate-links">
-  <div class="mapple-generate-links__input-wrapper">
-    <input type="text" class="form__text mapple-generate-links__input" required />
-    <button onclick={ handleOnClick } class="button mapple-generate-links__button">
+<maple-generate-links class="maple-generate-links">
+  <div class="maple-generate-links__input-wrapper">
+    <input type="text" class="form__text maple-generate-links__input" required />
+    <button onclick={ handleOnClick } class="button maple-generate-links__button">
       Generate!
     </button>
-    <div if={ state.loading } class="mapple-generate-links__loading" />
+    <div if={ state.loading } class="maple-generate-links__loading" />
   </div>
-  <div if={ state.gId && noError() } class="mapple-generate-links__result">
+  <div if={ state.gId && noError() } class="maple-generate-links__result">
     Direct url: <a href="{ state.directUrl }">{ state.directUrl }</a><br>
     Iframe url: <a href="{ state.iframeUrl }">{ state.iframeUrl }</a><br>
     Iframe embed: <pre><code>{ state.iframe } </code></pre>
   </div>
-  <span if={ state.error } class="mapple-generate-links__error">
+  <span if={ state.error } class="maple-generate-links__error">
     { state.error.msg }<br>
     <strong>{ state.error.code }</strong>
   </span>
-  <span if={ state.urlError } class="mapple-generate-links__error">
+  <span if={ state.urlError } class="maple-generate-links__error">
     This didn't work (your url seems not to be correct). Try the steps below.
   </span>
 
@@ -43,4 +43,4 @@
       }
     }
   </script>
-</mapple-generate-links>
+</maple-generate-links>

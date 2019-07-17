@@ -39,10 +39,10 @@ const geoMerge = ({ data, x, y, name, country }) => {
 // then do this:
 CONTROL.on(EVENTS.error, ({ code, msg }) => {
   CONTROL.trigger(EVENTS.loaded) // end loading spinner
-  const mapple = document.getElementById('mapple')
-  if (mapple.innerHTML === '') {
+  const maple = document.getElementById('maple')
+  if (maple.innerHTML === '') {
     // app not mounted
-    mapple.innerHTML = `<div class="mapple-error">
+    maple.innerHTML = `<div class="maple-error">
       ${msg}:<br><strong>${code}</strong></div>`
   }
 })

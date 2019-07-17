@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 import proj4 from 'proj4'
 
-// *Mapple* wants to use a proper projection for europe
+// *Maple* wants to use a proper projection for europe
 // Eurostat itself refers to ETRS-LAEA and this seems indeed
 // a good suggestion:
 //

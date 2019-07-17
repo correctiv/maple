@@ -1,16 +1,16 @@
-<mapple-infobox class="mapple-infobox { state.visible ? 'mapple-infobox--visible' : null }">
+<maple-infobox class="maple-infobox { state.visible ? 'maple-infobox--visible' : null }">
 
-  <button class="mapple-infobox__close-btn" aria-label='Close' onclick={ handleClose }></button>
+  <button class="maple-infobox__close-btn" aria-label='Close' onclick={ handleClose }></button>
 
-  <header class="mapple-infobox__section mapple-infobox__section--head">
-    <span if={ state.showCountry } class="mapple-infobox__section-subtitle">
+  <header class="maple-infobox__section maple-infobox__section--head">
+    <span if={ state.showCountry } class="maple-infobox__section-subtitle">
       { state.data.country }</span>
-    <h3 class="mapple-infobox__section-title">{ state.data.name }</h3>
+    <h3 class="maple-infobox__section-title">{ state.data.name }</h3>
   </header>
 
-  <section class="mapple-infobox__section">
-    <h3 class="mapple-infobox__section-title">{ state.txt.tooltip_title }</h3>
-    <p class="mapple-infobox__description">{ state.txt.tooltip_description }</h3>
+  <section class="maple-infobox__section">
+    <h3 class="maple-infobox__section-title">{ state.txt.tooltip_title }</h3>
+    <p class="maple-infobox__description">{ state.txt.tooltip_description }</h3>
     <dl>
       <dt>{ f(state.data.x) } { state.txt.unit1 }</dt>
       <dd>{ state.txt.value1_label }</dd>
@@ -21,7 +21,7 @@
     </dl>
   </section>
 
-  <section class="mapple-infobox__section mapple-infobox__section--data">
+  <section class="maple-infobox__section maple-infobox__section--data">
     <strong>{ state.txt.value1_label }: </strong>
     <a href={ state.txt.data1_url }>{ state.txt.data1_info }</a><br>
       <strong>{ state.txt.value2_label }: </strong>
@@ -60,4 +60,4 @@
     }
   </script>
 
-</mapple-infobox>
+</maple-infobox>

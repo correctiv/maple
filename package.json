@@ -1,5 +1,5 @@
 {
-  "name": "mapple",
+  "name": "maple",
   "version": "0.0.1",
   "description": "A prototype for rendering bivariate choropleth maps for european NUTS regions via a simple Google Spreadsheet",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/correctiv/mapple.git"
+    "url": "https://github.com/correctiv/maple.git"
   },
   "keywords": [
     "webpack",
@@ -21,7 +21,7 @@
   "author": "Simon Wörpel <simon.woerpel@medienrevolte.de>",
   "license": "",
   "bugs": {
-    "url": "https://github.com/correctiv/mapple.git"
+    "url": "https://github.com/correctiv/maple.git"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

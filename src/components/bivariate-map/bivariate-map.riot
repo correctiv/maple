@@ -1,5 +1,5 @@
 <bivariate-map>
-  <div class="mapple-bivariate-map__svg-wrapper" id="mapple-svg-container" />
+  <div class="maple-bivariate-map__svg-wrapper" id="maple-svg-container" />
 
   <script>
     import { CONTROL, EVENTS } from '~/events.js'
@@ -11,7 +11,7 @@
         hilighted: null
       },
       onMounted() {
-        this.selection = renderMap('#mapple-svg-container')
+        this.selection = renderMap('#maple-svg-container')
         this.attachEvents()
       },
       attachEvents() {

@@ -1,8 +1,8 @@
-<mapple-docs class="mapple-docs">
+<maple-docs class="maple-docs">
 
-  <div class="body-wrapper mapple-docs">
-    <header class="mapple-header">
-      <a href="/" class="mapple-header__logo" />
+  <div class="body-wrapper maple-docs">
+    <header class="maple-header">
+      <a href="/" class="maple-header__logo" />
     </header>
     <main id="main" class="site-main" role="main">
       <div class="container">
@@ -18,8 +18,8 @@
   <script>
     import * as riot from 'riot'
     import { STORE, CONTROL, EVENTS } from '~/events.js'
-    import MappleExamples from './examples.riot'
-    import MappleGenerateLinks from './generate-links.riot'
+    import MapleExamples from './examples.riot'
+    import MapleGenerateLinks from './generate-links.riot'
     import examples from './examples.js'
 
     const content = require('html-loader!markdown-loader!./docs.md')
@@ -38,12 +38,12 @@
       onMounted() {
         this.$('section#inner-content').innerHTML = content
         loadCss(this.props.cssUrl)
-        riot.register('mapple-examples', MappleExamples)
-        riot.register('mapple-generate-links', MappleGenerateLinks)
-        riot.mount('mapple-examples')
-        riot.mount('mapple-generate-links')
+        riot.register('maple-examples', MapleExamples)
+        riot.register('maple-generate-links', MapleGenerateLinks)
+        riot.mount('maple-examples')
+        riot.mount('maple-generate-links')
         CONTROL.trigger(EVENTS.loaded)
       }
     }
   </script>
-</mapple-docs>
+</maple-docs>

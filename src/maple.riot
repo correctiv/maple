@@ -1,29 +1,29 @@
-<mapple>
-  <mapple-header if={ !props.embed } class="mapple-header" />
+<maple>
+  <maple-header if={ !props.embed } class="maple-header" />
   <div if={ !state.error }>
-    <section class="mapple__map-header
-      { props.embed ? 'mapple__map-header--embed' : null }"
+    <section class="maple__map-header
+      { props.embed ? 'maple__map-header--embed' : null }"
       style={ state.adjust.header }>
-      <h2 class="mapple__map-title">{ state.title }</h2>
-      <p class="mapple__map-intro">{ state.intro }</p>
+      <h2 class="maple__map-title">{ state.title }</h2>
+      <p class="maple__map-intro">{ state.intro }</p>
     </section>
-    <bivariate-map class="mapple-bivariate-map
-      { props.embed ? 'mapple-bivariate-map--embed' : null }"
+    <bivariate-map class="maple-bivariate-map
+      { props.embed ? 'maple-bivariate-map--embed' : null }"
       style="max-width:{ state.app_maxwidth };" />
-    <mapple-searchbox class="mapple-searchbox" style={ state.adjust.searchbox }/>
-    <mapple-infobox class="mapple-infobox" style={ state.adjust.infobox } />
-    <mapple-legend class="mapple-legend" style={ state.adjust.legend } />
+    <maple-searchbox class="maple-searchbox" style={ state.adjust.searchbox }/>
+    <maple-infobox class="maple-infobox" style={ state.adjust.infobox } />
+    <maple-legend class="maple-legend" style={ state.adjust.legend } />
   </div>
-  <footer if={ props.embed } class="mapple-footer">
-    <img src={ logo } class="mapple-footer__logo" />
+  <footer if={ props.embed } class="maple-footer">
+    <img src={ logo } class="maple-footer__logo" />
   </footer>
 
   <script>
     import BivariateMap from '~/components/bivariate-map/bivariate-map.riot'
-    import MappleInfobox from '~/components/infobox/infobox.riot'
-    import MappleSearchbox from '~/components/searchbox/searchbox.riot'
-    import MappleLegend from '~/components/legend/legend.riot'
-    import MappleHeader from '~/components/header/header.riot'
+    import MapleInfobox from '~/components/infobox/infobox.riot'
+    import MapleSearchbox from '~/components/searchbox/searchbox.riot'
+    import MapleLegend from '~/components/legend/legend.riot'
+    import MapleHeader from '~/components/header/header.riot'
     import { STORE, CONTROL, EVENTS } from '~/events.js'
     import logo from '~/img/logo.svg'
 
@@ -52,10 +52,10 @@
       },
       components: {
         BivariateMap,
-        MappleInfobox,
-        MappleSearchbox,
-        MappleLegend,
-        MappleHeader
+        MapleInfobox,
+        MapleSearchbox,
+        MapleLegend,
+        MapleHeader
       },
       onMounted() {
         this.update({...STORE.config, error: STORE.error })
@@ -67,4 +67,4 @@
     }
 
   </script>
-</mapple>
+</maple>

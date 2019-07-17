@@ -19,7 +19,7 @@ module.exports = merge(common, {
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'mapple-[hash].css'
+      filename: 'maple-[hash].css'
     })
   ],
   module: {

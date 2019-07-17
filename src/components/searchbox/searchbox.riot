@@ -1,12 +1,12 @@
-<mapple-searchbox class="mapple-searchbox">
+<maple-searchbox class="maple-searchbox">
 
   <input type="text"
-    oninput={ doSearch } class="mapple-searchbox__input"
+    oninput={ doSearch } class="maple-searchbox__input"
     placeholder="Search for your country..."
   />
-  <ul if={ state.results.length } class="mapple-searchbox__result-list">
+  <ul if={ state.results.length } class="maple-searchbox__result-list">
     <li each={ feature in state.results }
-      class="mapple-searchbox__result-list__item"
+      class="maple-searchbox__result-list__item"
       onclick={ () => handleOnClick(feature) }>
       { feature.properties.name } <span>{ feature.properties.country }</span>
     </li>
@@ -49,4 +49,4 @@
     }
   </script>
 
-</mapple-searchbox>
+</maple-searchbox>

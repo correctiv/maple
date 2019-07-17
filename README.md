@@ -1,9 +1,9 @@
-# CORRECTIV.Mapple
+# CORRECTIV.Maple
 
 A prototype for rendering bivariate choropleth maps for european NUTS regions
 via a simple Google Spreadsheet.
 
-[See how it works](https://correctiv.github.io/mapple/)
+[See how it works](https://correctiv.github.io/maple/)
 
 The urls to the Google Spreadsheet templates are located in `src/pages/examples.js`
 

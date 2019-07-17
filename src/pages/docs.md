@@ -1,4 +1,4 @@
-## CORRECTIV.Mapple
+## CORRECTIV.Maple
 
 This is a prototype for reusable bivariate maps for different regions all over
 europe. Bivariate means, two dimensions of data are displayed on one map at the
@@ -15,7 +15,7 @@ into your existing article or website. See instructions below.
 
 #### 1. Find your data
 
-Find two european datasets with the same regional level. Currently *Mapple*
+Find two european datasets with the same regional level. Currently *Maple*
 supports [NUTS-levels](https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics)
 1, 2 or 3 and introduces a faked level 0 which are just the european countries.
 
@@ -38,7 +38,7 @@ Good sources for european datasets are
 
 Please use our template spreadsheets with example data:
 
-<mapple-examples></mapple-examples>
+<maple-examples></maple-examples>
 
 Copy the spreadsheet you need into your account and edit it
 ("Edit" > "Make a copy").
@@ -68,7 +68,7 @@ Refer to the further explanations for each setting in the Config-Sheet.
 **Names:** The names of european countries to use for a `VLOOKUP` for the
 Data-Sheet if you only have the ISO-codes available
 
-Don't change the names of the Sheets (**Data** & **Config**), as *Mapple* is
+Don't change the names of the Sheets (**Data** & **Config**), as *Maple* is
 relying on these exact names to work properly.
 
 #### 3. Make spreadsheet public
@@ -82,7 +82,7 @@ automatically.
 
 Copy the url of your Google spreadsheet into this field:
 
-<mapple-generate-links></mapple-generate-links>
+<maple-generate-links></maple-generate-links>
 
 *If this doesn't work:*
 

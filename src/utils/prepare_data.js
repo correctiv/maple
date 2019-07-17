@@ -14,14 +14,20 @@ export default (data, config) => {
   // calculate bivariate
   const extentX = d3.extent(data, x)
   const extentY = d3.extent(data, y)
+
+  const xBuckets = ['X1', 'X2', 'X3']
+  const yBuckets = ['Y1', 'Y2', 'Y3']
+  config.value1_reverse === 'yes' && xBuckets.reverse() && extentX.reverse()
+  config.value2_reverse === 'yes' && yBuckets.reverse() && extentY.reverse()
+
   const getXBucket = d3
     .scaleQuantile()
     .domain(extentX)
-    .range(['X1', 'X2', 'X3'])
+    .range(xBuckets)
   const getYBucket = d3
     .scaleQuantile()
     .domain(extentY)
-    .range(['Y1', 'Y2', 'Y3'])
+    .range(yBuckets)
 
   // colors
   const colors = {
